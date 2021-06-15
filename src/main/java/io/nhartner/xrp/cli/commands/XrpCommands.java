@@ -23,6 +23,7 @@ import org.xrpl.xrpl4j.model.transactions.Address;
 import org.xrpl.xrpl4j.model.transactions.Payment;
 import org.xrpl.xrpl4j.model.transactions.XrpCurrencyAmount;
 import org.xrpl.xrpl4j.wallet.DefaultWalletFactory;
+import org.xrpl.xrpl4j.wallet.SeedWalletGenerationResult;
 import org.xrpl.xrpl4j.wallet.Wallet;
 
 @SuppressWarnings("deprecation")
@@ -38,7 +39,7 @@ public class XrpCommands {
 
   @ShellMethod(value = "Generate a new account")
   public String newAccount() {
-    var result = DefaultWalletFactory.getInstance().randomWallet(false);
+    SeedWalletGenerationResult result = DefaultWalletFactory.getInstance().randomWallet(false);
     return String.format("Address: %s  Seed: %s", result.wallet().classicAddress(), result.seed());
   }
 
